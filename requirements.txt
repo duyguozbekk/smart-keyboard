@@ -1,0 +1,9 @@
+# Python 3.10 - 3.12 recommended (tested target: macOS on Apple Silicon)
+torch>=2.3,<2.9
+transformers>=4.44,<4.57
+datasets>=2.19,<5
+tokenizers>=0.19
+huggingface_hub>=0.24
+gradio>=4.44,<6
+numpy>=1.26
+matplotlib>=3.8

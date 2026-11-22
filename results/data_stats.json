@@ -1,0 +1,14 @@
+{
+  "train": {
+    "paragraphs": 17556,
+    "words": 1710359
+  },
+  "valid": {
+    "paragraphs": 1841,
+    "words": 179310
+  },
+  "test": {
+    "paragraphs": 2185,
+    "words": 201560
+  }
+}

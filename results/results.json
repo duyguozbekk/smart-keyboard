@@ -1,0 +1,373 @@
+{
+  "hardware": {
+    "cpu": "Apple M2",
+    "os": "Darwin 27.2.0",
+    "python": "3.10.11",
+    "torch": "2.8.0",
+    "torch_threads": 4,
+    "quantized_engine": "qnnpack"
+  },
+  "test_paragraphs": 2185,
+  "top3_positions": 1000,
+  "models": [
+    {
+      "key": "ngram_addone",
+      "model": "Trigram (add-one)",
+      "precision": "float64 counts",
+      "word_ppl": 415126.6095237767,
+      "test_words": 201560,
+      "size_mb": 35.879570960998535,
+      "top3_acc": 0.22,
+      "latency_ms_mean": 2.13179358447087,
+      "latency_ms_p50": 2.1260204957798123,
+      "latency_ms_p95": 2.2197124926606193,
+      "latency_runs": 1000
+    },
+    {
+      "key": "ngram_kn",
+      "model": "Trigram (Kneser-Ney)",
+      "precision": "float64 counts",
+      "word_ppl": 2940.721276560108,
+      "test_words": 201560,
+      "size_mb": 42.68971824645996,
+      "top3_acc": 0.29,
+      "latency_ms_mean": 2.743365602364065,
+      "latency_ms_p50": 2.7490205102367327,
+      "latency_ms_p95": 2.8382288684952073,
+      "latency_runs": 1000
+    },
+    {
+      "key": "ffnn",
+      "model": "Feed-forward NN LM",
+      "precision": "FP32",
+      "word_ppl": 8316.328023263288,
+      "test_words": 201560,
+      "size_mb": 20.81603240966797,
+      "top3_acc": 0.265,
+      "latency_ms_mean": 8.186839033296565,
+      "latency_ms_p50": 7.90970801608637,
+      "latency_ms_p95": 9.367788111558184,
+      "latency_runs": 1000
+    },
+    {
+      "key": "gpt2",
+      "model": "GPT-2 fine-tuned",
+      "precision": "FP32",
+      "word_ppl": 89.21920864622483,
+      "test_words": 201560,
+      "size_mb": 474.7144775390625,
+      "top3_acc": 0.488,
+      "latency_ms_mean": 155.39997617533663,
+      "latency_ms_p50": 159.52333349559922,
+      "latency_ms_p95": 170.47569852584274,
+      "latency_runs": 1000,
+      "kv_cache": true,
+      "kv_cache_check_maxdiff": 3.2901763916015625e-05
+    },
+    {
+      "key": "gpt2_int8",
+      "model": "GPT-2 fine-tuned INT8",
+      "precision": "INT8 dynamic (blocks), FP32 head",
+      "word_ppl": 108.25121402632543,
+      "test_words": 201560,
+      "size_mb": 231.78748416900635,
+      "top3_acc": 0.47,
+      "latency_ms_mean": 166.07668656940223,
+      "latency_ms_p50": 170.27564549061935,
+      "latency_ms_p95": 195.78357529826462,
+      "latency_runs": 1000,
+      "kv_cache": true,
+      "kv_cache_check_maxdiff": 0.6484532356262207
+    }
+  ],
+  "examples": [
+    {
+      "model": "Trigram (add-one)",
+      "suggestions": {
+        "The film was released in the United": [
+          "States",
+          "Kingdom",
+          "Nations"
+        ],
+        "He was born in": [
+          "the",
+          "Galveston",
+          "Lock"
+        ],
+        "The album debuted at number one on the": [
+          "Billboard",
+          "island",
+          "ground"
+        ],
+        "During the Second World": [
+          "War",
+          "Wars",
+          "polic"
+        ],
+        "The species is found in": [
+          "the",
+          "a",
+          "Europe"
+        ]
+      }
+    },
+    {
+      "model": "Trigram (Kneser-Ney)",
+      "suggestions": {
+        "The film was released in the United": [
+          "States",
+          "Kingdom",
+          "Nations"
+        ],
+        "He was born in": [
+          "the",
+          "a",
+          "Galveston"
+        ],
+        "The album debuted at number one on the": [
+          "Billboard",
+          "island",
+          "album"
+        ],
+        "During the Second World": [
+          "War",
+          "Wars",
+          "Warrior"
+        ],
+        "The species is found in": [
+          "the",
+          "a",
+          "Europe"
+        ]
+      }
+    },
+    {
+      "model": "Feed-forward NN LM",
+      "suggestions": {
+        "The film was released in the United": [
+          "States",
+          "Kingdom",
+          "Nations"
+        ],
+        "He was born in": [
+          "the",
+          "a",
+          "his"
+        ],
+        "The album debuted at number one on the": [
+          "Billboard",
+          "island",
+          "same"
+        ],
+        "During the Second World": [
+          "War",
+          "Cup",
+          "Tour"
+        ],
+        "The species is found in": [
+          "the",
+          "a",
+          "his"
+        ]
+      }
+    },
+    {
+      "model": "GPT-2 fine-tuned",
+      "suggestions": {
+        "The film was released in the United": [
+          "States",
+          "Kingdom",
+          "Arab"
+        ],
+        "He was born in": [
+          "the",
+          "New",
+          "a"
+        ],
+        "The album debuted at number one on the": [
+          "Billboard",
+          "UK",
+          "US"
+        ],
+        "During the Second World": [
+          "War",
+          "Wars",
+          "war"
+        ],
+        "The species is found in": [
+          "the",
+          "tropical",
+          "many"
+        ]
+      }
+    },
+    {
+      "model": "GPT-2 fine-tuned INT8",
+      "suggestions": {
+        "The film was released in the United": [
+          "Kingdom",
+          "States",
+          "Arab"
+        ],
+        "He was born in": [
+          "the",
+          "a",
+          "London"
+        ],
+        "The album debuted at number one on the": [
+          "Billboard",
+          "UK",
+          "US"
+        ],
+        "During the Second World": [
+          "War",
+          "Wars",
+          "war"
+        ],
+        "The species is found in": [
+          "the",
+          "tropical",
+          "a"
+        ]
+      }
+    }
+  ],
+  "failures": [
+    {
+      "context": "Pentecostal fire. The beginning of the poem discusses time and winter, with attention paid to the arrival of summer. The",
+      "target": "images",
+      "predicted": [
+        "poem",
+        "end",
+        "second"
+      ]
+    },
+    {
+      "context": "ng on land. Several types of dissorophoids do not fully metamorphose, but retain features of juveniles such as gills and",
+      "target": "small",
+      "predicted": [
+        "teeth",
+        "the",
+        "a"
+      ]
+    },
+    {
+      "context": "ities and intersects with Hinman Road (CR 903) just ahead of a bridge over the Erie Canal. Past the waterway, the bypass",
+      "target": "takes",
+      "predicted": [
+        "passes",
+        "is",
+        "crosses"
+      ]
+    },
+    {
+      "context": "ds in action came in the U.S. Civil War. The U.S. Navy at the time the war broke out had no ironclads, its most powerful",
+      "target": "ships",
+      "predicted": [
+        "being",
+        "weapon",
+        "weapons"
+      ]
+    },
+    {
+      "context": "torias. Finally, he stated that \"Returning fans will revel in this combination of freedom and growth, and appreciate the",
+      "target": "return",
+      "predicted": [
+        "music",
+        "album",
+        "song"
+      ]
+    },
+    {
+      "context": "moved across portions of Honshu and Hokkaido. After weakening to tropical storm status, the cyclone became extratropical",
+      "target": "on",
+      "predicted": [
+        "in",
+        "and",
+        "with"
+      ]
+    },
+    {
+      "context": " perhaps in a fashion similar to what he did during the Pisonian conspiracy under Nero. Alternatively, Domitian may have",
+      "target": "selected",
+      "predicted": [
+        "been",
+        "played",
+        "had"
+      ]
+    },
+    {
+      "context": "he fate of the graves in the post-war period. Following a suggestion by the British Army, the National Committee for the",
+      "target": "Care",
+      "predicted": [
+        "Protection",
+        "Preservation",
+        "Defence"
+      ]
+    },
+    {
+      "context": "re, the route crosses over CSX Transportation's Lockport Subdivision rail line at the hamlet of Lockport Junction before",
+      "target": "intersecting",
+      "predicted": [
+        "turning",
+        "passing",
+        "heading"
+      ]
+    },
+    {
+      "context": "up were Theodore Sedgwick, Caleb Strong, James Sullivan, Levi Lincoln, Sr., and Thomas Dawes). Although many rebels were",
+      "target": "ultimately",
+      "predicted": [
+        "killed",
+        "arrested",
+        "executed"
+      ]
+    },
+    {
+      "context": "n for a temporary restraining order to prevent Lesnar from continuing to work with NJPW, but the court did not grant it.",
+      "target": "Following",
+      "predicted": [
+        "The",
+        "On",
+        "In"
+      ]
+    },
+    {
+      "context": "He escaped from Chang 'an the following year, and was appointed Reminder when he rejoined the",
+      "target": "court",
+      "predicted": [
+        "army",
+        "Royal",
+        "Imperial"
+      ]
+    },
+    {
+      "context": "s the third youngest pitcher to ever start a playoff series opener, behind only Fernando Valenzuela in the 1981 NLDS and",
+      "target": "Rick",
+      "predicted": [
+        "Carlos",
+        "Jose",
+        "the"
+      ]
+    },
+    {
+      "context": "tember 2011. It was directed by Ricardo Calder\u00f3n (who also directed Arjona's music video for \"Como Duele\") and filmed in",
+      "target": "Mexico",
+      "predicted": [
+        "black",
+        "a",
+        "white"
+      ]
+    },
+    {
+      "context": " both problems; the shells were unable to penetrate the 4.5 in (118 mm) armor of Gloire, while sometimes the screw which",
+      "target": "closed",
+      "predicted": [
+        "was",
+        "held",
+        "had"
+      ]
+    }
+  ],
+  "fp32_int8_top1_agreement": 0.8
+}

@@ -1,0 +1,16 @@
+{
+  "positions": 200,
+  "fp32_ms": 148.65517662081402,
+  "fp32_top3_acc": 0.47,
+  "int8_no_cache": {
+    "top1_agreement_with_fp32": 0.805,
+    "top3_acc": 0.48,
+    "latency_ms": 603.6673254305788
+  },
+  "int8_cache": {
+    "top1_agreement_with_fp32": 0.805,
+    "top3_acc": 0.48,
+    "latency_ms": 139.39996682980563
+  },
+  "cache_allowed": true
+}

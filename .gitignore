@@ -1,0 +1,16 @@
+# data and weights are NOT committed (weights live on the Hugging Face Hub)
+data/
+artifacts/
+artifacts_quick/
+results_quick/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.gradio/
+flagged/
+*.pt
+*.pkl
+*.safetensors
+*.bin
